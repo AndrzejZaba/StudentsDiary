@@ -19,6 +19,9 @@ namespace StudentsDiary
         {
             InitializeComponent();
 
+            var students = DeserializeFromFile();
+
+            dgvDiary.DataSource = students;
         }
 
         public void SerializeToFile(List<Student> students)
@@ -52,12 +55,16 @@ namespace StudentsDiary
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            var addEditStudent = new AddEditStudent();
+            addEditStudent.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            //if (dgvDiary.SelectedRows)
+            //{
 
+            //}
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -67,7 +74,8 @@ namespace StudentsDiary
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            var students = DeserializeFromFile();
+            dgvDiary.DataSource = students;
         }
     }
 }
