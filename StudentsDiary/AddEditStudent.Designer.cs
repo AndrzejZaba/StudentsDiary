@@ -39,7 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbTechnology = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbPhisics = new System.Windows.Forms.TextBox();
+            this.tbPhysics = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tbPolishLang = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -140,12 +140,12 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Fizyka";
             // 
-            // tbPhisics
+            // tbPhysics
             // 
-            this.tbPhisics.Location = new System.Drawing.Point(121, 167);
-            this.tbPhisics.Name = "tbPhisics";
-            this.tbPhisics.Size = new System.Drawing.Size(198, 20);
-            this.tbPhisics.TabIndex = 10;
+            this.tbPhysics.Location = new System.Drawing.Point(121, 167);
+            this.tbPhysics.Name = "tbPhysics";
+            this.tbPhysics.Size = new System.Drawing.Size(198, 20);
+            this.tbPhysics.TabIndex = 10;
             // 
             // label7
             // 
@@ -230,7 +230,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbPolishLang);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.tbPhisics);
+            this.Controls.Add(this.tbPhysics);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbTechnology);
             this.Controls.Add(this.label4);
@@ -241,8 +241,11 @@
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbId);
+            this.MaximumSize = new System.Drawing.Size(361, 458);
+            this.MinimumSize = new System.Drawing.Size(361, 458);
             this.Name = "AddEditStudent";
-            this.Text = "AddEditStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodawanie ucznia";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,7 +264,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbTechnology;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbPhisics;
+        private System.Windows.Forms.TextBox tbPhysics;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbPolishLang;
         private System.Windows.Forms.Label label8;

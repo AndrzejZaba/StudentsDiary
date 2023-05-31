@@ -14,53 +14,72 @@ namespace StudentsDiary
 {
     public partial class AddEditStudent : Form
     {
-        private string _filePath = Path.Combine(Environment.CurrentDirectory, "students.txt");
+        private int _studentId;
+        private Student _student;
 
-        public AddEditStudent()
+        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(
+            Program.FilePath);
+
+        public AddEditStudent(int id = 0)
         {
             InitializeComponent();
+            _studentId = id;
+
+            GetStudentData();
+
+            tbFirstName.Select();
         }
 
-        public void SerializeToFile(List<Student> students)
+        private void GetStudentData()
         {
-            var serializer = new XmlSerializer(typeof(List<Student>));
-            using (var streamWriter = new StreamWriter(_filePath))
+            if (_studentId != 0)
             {
-                serializer.Serialize(streamWriter, students);
-                streamWriter.Close();
-            }
+                Text = "Edycja danych ucznia";
+                var students = _fileHelper.DeserializeFromFile();
+                _student = students.FirstOrDefault(x => x.Id == _studentId);
 
+                if (_student == null)
+                    throw new Exception("Brak użytkonika o podanym Id");
+
+                FillTextBoxes();
+
+            }
         }
 
-        public List<Student> DeserializeFromFile()
+        private void FillTextBoxes()
         {
-            if (!File.Exists(_filePath))
-            {
-                return new List<Student>();
-            }
-            var serializer = new XmlSerializer(typeof(List<Student>));
-
-            using (var streamReader = new StreamReader(_filePath))
-            {
-                var students = (List<Student>)serializer.Deserialize(streamReader);
-
-                streamReader.Close();
-                return students;
-            }
-
+            tbId.Text = _student.Id.ToString();
+            tbFirstName.Text = _student.FirstName.ToString();
+            tbLastName.Text = _student.LastName.ToString();
+            tbMath.Text = _student.Math.ToString();
+            tbPhysics.Text = _student.Physics.ToString();
+            tbTechnology.Text = _student.Technology.ToString();
+            tbPolishLang.Text = _student.PolishLang.ToString();
+            tbForeignLang.Text = _student.ForeignLang.ToString();
+            rtbComments.Text = _student.Comments.ToString();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            var students = DeserializeFromFile();
+            var students = _fileHelper.DeserializeFromFile();
 
-            var studentWithHighestId = students.OrderBy(x => x.Id).FirstOrDefault();
+            if(_studentId != 0)
+                students.RemoveAll(x => x.Id == _studentId);
+            else
+                AssignIdToNewStudent(students);
 
-            var studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
+            AddNewUserToList(students);
 
+            _fileHelper.SerializeToFile(students);
+
+            Close();
+        }
+
+        private void AddNewUserToList(List<Student> students)
+        {
             var student = new Student
             {
-                Id = studentId,
+                Id = _studentId,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
                 Comments = rtbComments.Text,
@@ -68,19 +87,22 @@ namespace StudentsDiary
                 PolishLang = tbPolishLang.Text,
                 Math = tbMath.Text,
                 Technology = tbTechnology.Text,
-                Physics = tbPhisics.Text
+                Physics = tbPhysics.Text
             };
 
             students.Add(student);
+        }
 
-            SerializeToFile(students);
+        private void AssignIdToNewStudent(List<Student> students)
+        {
+            var studentWithHighestId = students.OrderByDescending(x => x.Id).FirstOrDefault();
 
-            Close();
+            _studentId = studentWithHighestId == null ? 1 : studentWithHighestId.Id + 1;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }
