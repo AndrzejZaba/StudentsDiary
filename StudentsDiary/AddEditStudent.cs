@@ -25,6 +25,7 @@ namespace StudentsDiary
         {
             InitializeComponent();
             _studentId = id;
+            cmbGroupId.DataSource = GetListOfGroupIds();    
 
             GetStudentData();
 
@@ -47,9 +48,24 @@ namespace StudentsDiary
             }
         }
 
+        private List<string> GetListOfGroupIds()
+        {
+            var list = typeof(GroupIds).GetFields().Select(x => x.GetValue(typeof(GroupIds))).ToList();
+
+            var listToReturn  = new List<string>();
+
+            foreach (var groupId in list) 
+            {
+                listToReturn.Add(groupId.ToString());
+            }
+            return listToReturn;
+        
+        }
+
         private void FillTextBoxes()
         {
             tbId.Text = _student.Id.ToString();
+            cmbGroupId.Text = _student.GroupId.ToString();
             tbFirstName.Text = _student.FirstName.ToString();
             tbLastName.Text = _student.LastName.ToString();
             tbMath.Text = _student.Math.ToString();
@@ -58,6 +74,7 @@ namespace StudentsDiary
             tbPolishLang.Text = _student.PolishLang.ToString();
             tbForeignLang.Text = _student.ForeignLang.ToString();
             rtbComments.Text = _student.Comments.ToString();
+            chbOptionalActivities.Checked = _student.IsTakingOptionalActivities;
         }
 
         private async void btnConfirm_Click(object sender, EventArgs e)
@@ -71,20 +88,9 @@ namespace StudentsDiary
 
             AddNewUserToList(students);
 
-            _fileHelper.SerializeToFile(students);
-
-            await LongProcessAsync();
+            await _fileHelper.SerializeToFile(students);
 
             Close();
-        }
-
-        private async Task LongProcessAsync()
-        {
-            await Task.Run(() =>
-            {
-                Thread.Sleep(3000);
-            });
-            
         }
 
         private void AddNewUserToList(List<Student> students)
@@ -92,6 +98,7 @@ namespace StudentsDiary
             var student = new Student
             {
                 Id = _studentId,
+                GroupId = cmbGroupId.Text,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
                 Comments = rtbComments.Text,
@@ -99,7 +106,8 @@ namespace StudentsDiary
                 PolishLang = tbPolishLang.Text,
                 Math = tbMath.Text,
                 Technology = tbTechnology.Text,
-                Physics = tbPhysics.Text
+                Physics = tbPhysics.Text,
+                IsTakingOptionalActivities = chbOptionalActivities.Checked
             };
 
             students.Add(student);

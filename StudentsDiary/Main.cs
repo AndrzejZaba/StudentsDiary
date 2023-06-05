@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -45,14 +46,17 @@ namespace StudentsDiary
         private void SetColumnsHeader()
         {
             dgvDiary.Columns[0].HeaderText = "Numer";
-            dgvDiary.Columns[1].HeaderText = "Imię";
-            dgvDiary.Columns[2].HeaderText = "Nazwisko";
-            dgvDiary.Columns[3].HeaderText = "Uwagi";
-            dgvDiary.Columns[4].HeaderText = "Matematyka";
-            dgvDiary.Columns[5].HeaderText = "Technologia";
-            dgvDiary.Columns[6].HeaderText = "Fizyka";
-            dgvDiary.Columns[7].HeaderText = "Język polski";
-            dgvDiary.Columns[8].HeaderText = "Język obcy";
+            dgvDiary.Columns[1].HeaderText = "Grupa";
+            dgvDiary.Columns[2].HeaderText = "Imię";
+            dgvDiary.Columns[3].HeaderText = "Nazwisko";
+            dgvDiary.Columns[4].HeaderText = "Uwagi";
+            dgvDiary.Columns[5].HeaderText = "Matematyka";
+            dgvDiary.Columns[6].HeaderText = "Technologia";
+            dgvDiary.Columns[7].HeaderText = "Fizyka";
+            dgvDiary.Columns[8].HeaderText = "Język polski";
+            dgvDiary.Columns[9].HeaderText = "Język obcy";
+            dgvDiary.Columns[10].HeaderText = "Zajęcia dodatkowe";
+            dgvDiary.ReadOnly = true;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -82,7 +86,7 @@ namespace StudentsDiary
             addEditStudent.ShowDialog();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvDiary.SelectedRows.Count == 0)
             {
@@ -99,16 +103,20 @@ namespace StudentsDiary
 
             if (confirmDelete == DialogResult.OK)
             {
-                DeleteStudent(Convert.ToInt32(selectedStudent.Cells[0].Value));
+                await DeleteStudent(Convert.ToInt32(selectedStudent.Cells[0].Value));
                 RefreshDiary();
             }
         }
 
-        private void DeleteStudent(int id)
+        private async Task DeleteStudent(int id)
         {
-            var students = _fileHelper.DeserializeFromFile();
-            students.RemoveAll(x => x.Id == id);
-            _fileHelper.SerializeToFile(students);
+            await Task.Run(() =>
+            {
+                var students = _fileHelper.DeserializeFromFile();
+                students.RemoveAll(x => x.Id == id);
+                _fileHelper.SerializeToFile(students);
+            });
+            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

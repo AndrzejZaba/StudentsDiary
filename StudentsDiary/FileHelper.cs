@@ -17,15 +17,17 @@ namespace StudentsDiary
             _filePath = filePath;
         }
 
-        public void SerializeToFile(T students)
+        public async Task SerializeToFile(T students)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            using (var streamWriter = new StreamWriter(_filePath))
+            await Task.Run(() =>
             {
-                serializer.Serialize(streamWriter, students);
-                streamWriter.Close();
-            }
-
+                var serializer = new XmlSerializer(typeof(T));
+                using (var streamWriter = new StreamWriter(_filePath))
+                {
+                    serializer.Serialize(streamWriter, students);
+                    streamWriter.Close();
+                }
+            });
         }
 
         public T DeserializeFromFile()

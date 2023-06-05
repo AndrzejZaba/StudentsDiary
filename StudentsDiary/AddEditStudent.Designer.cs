@@ -48,6 +48,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.chbOptionalActivities = new System.Windows.Forms.CheckBox();
+            this.cmbGroupId = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbId
@@ -70,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 66);
+            this.label2.Location = new System.Drawing.Point(30, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
@@ -78,7 +81,7 @@
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(121, 63);
+            this.tbFirstName.Location = new System.Drawing.Point(120, 90);
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(198, 20);
             this.tbFirstName.TabIndex = 2;
@@ -86,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 92);
+            this.label3.Location = new System.Drawing.Point(30, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 5;
@@ -94,7 +97,7 @@
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(121, 89);
+            this.tbLastName.Location = new System.Drawing.Point(120, 116);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(198, 20);
             this.tbLastName.TabIndex = 4;
@@ -102,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 118);
+            this.label4.Location = new System.Drawing.Point(30, 145);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 7;
@@ -110,7 +113,7 @@
             // 
             // tbMath
             // 
-            this.tbMath.Location = new System.Drawing.Point(121, 115);
+            this.tbMath.Location = new System.Drawing.Point(120, 142);
             this.tbMath.Name = "tbMath";
             this.tbMath.Size = new System.Drawing.Size(198, 20);
             this.tbMath.TabIndex = 6;
@@ -118,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 144);
+            this.label5.Location = new System.Drawing.Point(30, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 9;
@@ -126,7 +129,7 @@
             // 
             // tbTechnology
             // 
-            this.tbTechnology.Location = new System.Drawing.Point(121, 141);
+            this.tbTechnology.Location = new System.Drawing.Point(120, 168);
             this.tbTechnology.Name = "tbTechnology";
             this.tbTechnology.Size = new System.Drawing.Size(198, 20);
             this.tbTechnology.TabIndex = 8;
@@ -134,7 +137,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 170);
+            this.label6.Location = new System.Drawing.Point(30, 197);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 11;
@@ -142,7 +145,7 @@
             // 
             // tbPhysics
             // 
-            this.tbPhysics.Location = new System.Drawing.Point(121, 167);
+            this.tbPhysics.Location = new System.Drawing.Point(120, 194);
             this.tbPhysics.Name = "tbPhysics";
             this.tbPhysics.Size = new System.Drawing.Size(198, 20);
             this.tbPhysics.TabIndex = 10;
@@ -150,7 +153,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 196);
+            this.label7.Location = new System.Drawing.Point(30, 223);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 13;
@@ -158,7 +161,7 @@
             // 
             // tbPolishLang
             // 
-            this.tbPolishLang.Location = new System.Drawing.Point(121, 193);
+            this.tbPolishLang.Location = new System.Drawing.Point(120, 220);
             this.tbPolishLang.Name = "tbPolishLang";
             this.tbPolishLang.Size = new System.Drawing.Size(198, 20);
             this.tbPolishLang.TabIndex = 12;
@@ -166,7 +169,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(31, 222);
+            this.label8.Location = new System.Drawing.Point(30, 249);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 15;
@@ -174,14 +177,14 @@
             // 
             // tbForeignLang
             // 
-            this.tbForeignLang.Location = new System.Drawing.Point(121, 219);
+            this.tbForeignLang.Location = new System.Drawing.Point(120, 246);
             this.tbForeignLang.Name = "tbForeignLang";
             this.tbForeignLang.Size = new System.Drawing.Size(198, 20);
             this.tbForeignLang.TabIndex = 14;
             // 
             // rtbComments
             // 
-            this.rtbComments.Location = new System.Drawing.Point(122, 245);
+            this.rtbComments.Location = new System.Drawing.Point(120, 295);
             this.rtbComments.Name = "rtbComments";
             this.rtbComments.Size = new System.Drawing.Size(197, 111);
             this.rtbComments.TabIndex = 16;
@@ -190,7 +193,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(34, 245);
+            this.label9.Location = new System.Drawing.Point(30, 298);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 17;
@@ -198,7 +201,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(121, 371);
+            this.btnCancel.Location = new System.Drawing.Point(120, 423);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 18;
@@ -208,7 +211,7 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(233, 371);
+            this.btnConfirm.Location = new System.Drawing.Point(232, 423);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(86, 23);
             this.btnConfirm.TabIndex = 19;
@@ -216,11 +219,41 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // chbOptionalActivities
+            // 
+            this.chbOptionalActivities.AutoSize = true;
+            this.chbOptionalActivities.Location = new System.Drawing.Point(169, 272);
+            this.chbOptionalActivities.Name = "chbOptionalActivities";
+            this.chbOptionalActivities.Size = new System.Drawing.Size(117, 17);
+            this.chbOptionalActivities.TabIndex = 22;
+            this.chbOptionalActivities.Text = "Zajęcia dodatkowe";
+            this.chbOptionalActivities.UseVisualStyleBackColor = true;
+            // 
+            // cmbGroupId
+            // 
+            this.cmbGroupId.FormattingEnabled = true;
+            this.cmbGroupId.Location = new System.Drawing.Point(120, 63);
+            this.cmbGroupId.Name = "cmbGroupId";
+            this.cmbGroupId.Size = new System.Drawing.Size(198, 21);
+            this.cmbGroupId.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 66);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Id grupy:";
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 419);
+            this.ClientSize = new System.Drawing.Size(344, 461);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cmbGroupId);
+            this.Controls.Add(this.chbOptionalActivities);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label9);
@@ -241,8 +274,8 @@
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbId);
-            this.MaximumSize = new System.Drawing.Size(361, 458);
-            this.MinimumSize = new System.Drawing.Size(361, 458);
+            this.MaximumSize = new System.Drawing.Size(360, 500);
+            this.MinimumSize = new System.Drawing.Size(360, 500);
             this.Name = "AddEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodawanie ucznia";
@@ -273,5 +306,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.CheckBox chbOptionalActivities;
+        private System.Windows.Forms.ComboBox cmbGroupId;
+        private System.Windows.Forms.Label label10;
     }
 }
