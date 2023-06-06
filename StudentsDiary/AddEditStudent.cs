@@ -25,7 +25,7 @@ namespace StudentsDiary
         {
             InitializeComponent();
             _studentId = id;
-            cmbGroupId.DataSource = GetListOfGroupIds();    
+            cmbGroupId.DataSource = GroupIds.GetListOfGroupIds(includeAllStudents:false);    
 
             GetStudentData();
 
@@ -44,22 +44,7 @@ namespace StudentsDiary
                     throw new Exception("Brak użytkonika o podanym Id");
 
                 FillTextBoxes();
-
             }
-        }
-
-        private List<string> GetListOfGroupIds()
-        {
-            var list = typeof(GroupIds).GetFields().Select(x => x.GetValue(typeof(GroupIds))).ToList();
-
-            var listToReturn  = new List<string>();
-
-            foreach (var groupId in list) 
-            {
-                listToReturn.Add(groupId.ToString());
-            }
-            return listToReturn;
-        
         }
 
         private void FillTextBoxes()

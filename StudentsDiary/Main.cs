@@ -30,6 +30,8 @@ namespace StudentsDiary
 
             SetColumnsHeader();
 
+            PrepareFilterComboBox();
+
             if(IsMaximized)
             {
                 WindowState = FormWindowState.Maximized;
@@ -40,6 +42,11 @@ namespace StudentsDiary
         private void RefreshDiary()
         {
             var students = _fileHelper.DeserializeFromFile();
+            if (cmbFilterStudents.Text != GroupIds.AllStudents)
+            {
+                students = students.Where(x => x.GroupId == cmbFilterStudents.Text).ToList();
+            }
+            students = students.OrderBy(x => x.Id).ToList();
             dgvDiary.DataSource = students;
         }
 
@@ -57,6 +64,12 @@ namespace StudentsDiary
             dgvDiary.Columns[9].HeaderText = "Język obcy";
             dgvDiary.Columns[10].HeaderText = "Zajęcia dodatkowe";
             dgvDiary.ReadOnly = true;
+        }
+
+        private void PrepareFilterComboBox()
+        {
+            cmbFilterStudents.DataSource = GroupIds.GetListOfGroupIds(includeAllStudents: true);
+            cmbFilterStudents.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -126,7 +139,7 @@ namespace StudentsDiary
 
         private void btnAdd_MouseEnter(object sender, EventArgs e)
         {
-            btnAdd.BackColor = System.Drawing.Color.Aqua;
+            btnAdd.BackColor = System.Drawing.Color.LightGreen;
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -134,6 +147,16 @@ namespace StudentsDiary
             IsMaximized = WindowState == FormWindowState.Maximized;
 
             Settings.Default.Save();
+        }
+
+        private void cmbFilterStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDiary();
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            btnAdd.BackColor = System.Drawing.Color.LimeGreen;
         }
     }
 }

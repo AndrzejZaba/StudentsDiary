@@ -17,6 +17,11 @@ namespace StudentsDiary
             _filePath = filePath;
         }
 
+        /// <summary>
+        /// Serialize list of students to external .XML file.
+        /// </summary>
+        /// <param name="students">list of generic type objects</param>
+        /// <returns></returns>
         public async Task SerializeToFile(T students)
         {
             await Task.Run(() =>
@@ -30,6 +35,10 @@ namespace StudentsDiary
             });
         }
 
+        /// <summary>
+        /// Deserialize objects saved in external .XML file.
+        /// </summary>
+        /// <returns></returns>
         public T DeserializeFromFile()
         {
             if (!File.Exists(_filePath))

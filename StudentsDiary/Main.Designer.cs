@@ -33,6 +33,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvDiary = new System.Windows.Forms.DataGridView();
+            this.cmbFilterStudents = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +49,7 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             this.btnAdd.MouseEnter += new System.EventHandler(this.btnAdd_MouseEnter);
+            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
             // 
             // btnEdit
             // 
@@ -96,12 +99,34 @@
             this.dgvDiary.Size = new System.Drawing.Size(1050, 391);
             this.dgvDiary.TabIndex = 4;
             // 
+            // cmbFilterStudents
+            // 
+            this.cmbFilterStudents.FormattingEnabled = true;
+            this.cmbFilterStudents.Location = new System.Drawing.Point(408, 16);
+            this.cmbFilterStudents.Name = "cmbFilterStudents";
+            this.cmbFilterStudents.Size = new System.Drawing.Size(121, 21);
+            this.cmbFilterStudents.TabIndex = 5;
+            this.cmbFilterStudents.SelectedIndexChanged += new System.EventHandler(this.cmbFilterStudents_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(348, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Filtruj:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(1072, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbFilterStudents);
             this.Controls.Add(this.dgvDiary);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -112,6 +137,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiary)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,6 +148,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvDiary;
+        private System.Windows.Forms.ComboBox cmbFilterStudents;
+        private System.Windows.Forms.Label label1;
     }
 }
 
